@@ -76,7 +76,7 @@ const TechnicalSkills = () => {
             return (
               <GlassCard
                 key={index}
-                className="group hover:-translate-y-1 transition-all duration-300 bg-white/90 border-white/40 shadow-xl! shadow-gray-300/50!"
+                className="group hover:-translate-y-1 transition-all duration-30"
               >
                 <GlassCardHeader className="pb-6">
                   <div className="flex items-center gap-4">
