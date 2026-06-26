@@ -1,0 +1,178 @@
+.gradient-blur {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 65%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.gradient-blur > div,
+.gradient-blur::before,
+.gradient-blur::after {
+  position: absolute;
+  inset: 0;
+}
+
+.gradient-blur::before {
+  content: "";
+  z-index: 1;
+  backdrop-filter: blur(0.5px);
+  -webkit-backdrop-filter: blur(0.5px);
+
+  mask: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12.5%,
+    black 25%,
+    transparent 37.5%
+  );
+  -webkit-mask: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 12.5%,
+    black 25%,
+    transparent 37.5%
+  );
+}
+
+.gradient-blur > div:nth-child(1) {
+  z-index: 2;
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+
+  mask: linear-gradient(
+    to bottom,
+    transparent 12.5%,
+    black 25%,
+    black 37.5%,
+    transparent 50%
+  );
+  -webkit-mask: linear-gradient(
+    to bottom,
+    transparent 12.5%,
+    black 25%,
+    black 37.5%,
+    transparent 50%
+  );
+}
+
+.gradient-blur > div:nth-child(2) {
+  z-index: 3;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+
+  mask: linear-gradient(
+    to bottom,
+    transparent 25%,
+    black 37.5%,
+    black 50%,
+    transparent 62.5%
+  );
+  -webkit-mask: linear-gradient(
+    to bottom,
+    transparent 25%,
+    black 37.5%,
+    black 50%,
+    transparent 62.5%
+  );
+}
+
+.gradient-blur > div:nth-child(3) {
+  z-index: 4;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  mask: linear-gradient(
+    to bottom,
+    transparent 37.5%,
+    black 50%,
+    black 62.5%,
+    transparent 75%
+  );
+  -webkit-mask: linear-gradient(
+    to bottom,
+    transparent 37.5%,
+    black 50%,
+    black 62.5%,
+    transparent 75%
+  );
+}
+
+.gradient-blur > div:nth-child(4) {
+  z-index: 5;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  mask: linear-gradient(
+    to bottom,
+    transparent 50%,
+    black 62.5%,
+    black 75%,
+    transparent 87.5%
+  );
+  -webkit-mask: linear-gradient(
+    to bottom,
+    transparent 50%,
+    black 62.5%,
+    black 75%,
+    transparent 87.5%
+  );
+}
+
+.gradient-blur > div:nth-child(5) {
+  z-index: 6;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  mask: linear-gradient(
+    to bottom,
+    transparent 62.5%,
+    black 75%,
+    black 87.5%,
+    transparent 100%
+  );
+  -webkit-mask: linear-gradient(
+    to bottom,
+    transparent 62.5%,
+    black 75%,
+    black 87.5%,
+    transparent 100%
+  );
+}
+
+.gradient-blur > div:nth-child(6) {
+  z-index: 7;
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+
+  mask: linear-gradient(
+    to bottom,
+    transparent 75%,
+    black 87.5%,
+    black 100%
+  );
+  -webkit-mask: linear-gradient(
+    to bottom,
+    transparent 75%,
+    black 87.5%,
+    black 100%
+  );
+}
+
+.gradient-blur::after {
+  content: "";
+  z-index: 8;
+  backdrop-filter: blur(64px);
+  -webkit-backdrop-filter: blur(64px);
+
+  mask: linear-gradient(
+    to bottom,
+    transparent 87.5%,
+    black 100%
+  );
+  -webkit-mask: linear-gradient(
+    to bottom,
+    transparent 87.5%,
+    black 100%
+  );
+}
