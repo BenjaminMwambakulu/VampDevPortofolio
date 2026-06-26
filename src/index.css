@@ -5,3 +5,5 @@
   --font-futura: "Jost Variable", sans-serif;
 }
 
+p{
+  font-family: var(--font-Inter);}

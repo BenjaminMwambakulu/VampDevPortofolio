@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
-import Navbar from "./Navbar";
-import getImage from "../utils/getImage";
-import GradientBlur from "./GradientBlur";
-
+import GradientBlur from "../GradientBlur";
+import getImage from "../../utils/getImage";
 export default function HeroSection() {
   return (
     <section
@@ -16,8 +14,6 @@ export default function HeroSection() {
       <GradientBlur />
 
       <div className="relative z-10 flex min-h-screen flex-col">
-        <Navbar />
-
         {/* Hero Content */}
         <div className="flex flex-1 items-end px-6 pb-20 md:px-12 lg:px-20">
           <div className="max-w-3xl">
