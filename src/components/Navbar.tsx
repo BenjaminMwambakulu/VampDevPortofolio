@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import getImage from "../utils/getImage";
 
 const NAVLINKS = [
@@ -8,6 +9,22 @@ const NAVLINKS = [
   { name: "Projects", sectionId: "projects" },
   { name: "Contact", sectionId: "contact" },
 ];
+
+// Cleaned up variants with fluid, liquid physics baked directly in
+const containerVariants = {
+  hidden: {
+    y: -150,
+    scaleY: 1.3,
+    scaleX: 0.8,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    scaleY: 1,
+    scaleX: 1,
+    opacity: 1,
+  },
+};
 
 export default function Navbar() {
   const [isOverHero, setIsOverHero] = useState(true);
@@ -44,13 +61,12 @@ export default function Navbar() {
     if (!section) return;
 
     const navOffset = 104;
-    const top = section.getBoundingClientRect().top + window.scrollY - navOffset;
+    const top =
+      section.getBoundingClientRect().top + window.scrollY - navOffset;
     window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
   };
 
-  const topLineClass = isOverHero
-    ? "via-white/30"
-    : "via-black/15";
+  const topLineClass = isOverHero ? "via-white/30" : "via-black/15";
 
   const navShellClass = isOverHero
     ? "border-white/20 bg-white/10 shadow-black/60"
@@ -75,11 +91,15 @@ export default function Navbar() {
       />
 
       <div className="mx-auto max-w-screen-2xl px-6 md:px-12 lg:px-20">
-        <div
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={containerVariants}
+          style={{ transformOrigin: "top center" }} // Crucial for drop perspective
           className={`
             relative mt-3 rounded-3xl border ${navShellClass}
             shadow-2xl backdrop-blur-2xl
-            transition-all duration-300
+            transition-colors duration-300 /* REMOVED transition-all to fix Framer jank */
           `}
         >
           <div className="flex h-16 items-center justify-between px-8">
@@ -113,7 +133,7 @@ export default function Navbar() {
                       type="button"
                       onClick={() => scrollToSection(link.sectionId)}
                       className={`
-                        relative px-4 py-2 transition-all duration-300
+                        relative px-4 py-2 transition-colors duration-300
                         ${linkClass}
                         ${isActive ? activeLinkClass : ""}
                       `}
@@ -135,7 +155,7 @@ export default function Navbar() {
                   type="button"
                   onClick={() => scrollToSection("contact")}
                   className={`
-                    rounded-2xl px-6 py-2.5 text-sm font-semibold 
+                    rounded-2xl px-6 py-2.5 text-sm font-semibold
                     shadow-lg transition-all duration-300
                     hover:scale-105 active:scale-95 ${ctaClass}
                   `}
@@ -145,7 +165,7 @@ export default function Navbar() {
               </li>
             </ul>
           </div>
-        </div>
+        </motion.div>
       </div>
     </nav>
   );
