@@ -1,8 +1,8 @@
 // ProjectsSection.tsx
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { FolderOpen } from "lucide-react";
 import ProjectCard from "../ProjectCard";
+import SectionHeader from "../SectionHeader";
 
 export interface Project {
   id: string;
@@ -80,20 +80,15 @@ export default function ProjectsSection({
       aria-label="Projects"
     >
       {/* ==================== STICKY SECTION HEADER ==================== */}
-      <div className="sticky top-0 z-5 flex flex-col items-center text-center pt-20 pb-10 bg-white">
-        <div className="inline-flex items-center gap-3 mb-4">
-          <div className="h-px w-12 bg-black/30" />
-          <FolderOpen className="w-7 h-7 text-black" />
-          <div className="h-px w-12 bg-black/30" />
+      <div className="sticky top-0 z-5 bg-white px-4 pt-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader
+            number="03"
+            category="Featured Work"
+            title="Projects"
+            description="Selected work from recent years"
+          />
         </div>
-
-        <h2 className="font-futura text-5xl md:text-6xl tracking-tighter font-light">
-          Projects
-        </h2>
-
-        <p className="mt-4 text-xl text-gray-600 max-w-md">
-          Selected work from recent years
-        </p>
       </div>
 
       {safeProjects.map((project, index) => (

@@ -1,4 +1,4 @@
-import { User } from "lucide-react";
+import SectionHeader from "../SectionHeader";
 import getImage from "../../utils/getImage";
 
 export default function AboutSection() {
@@ -6,21 +6,12 @@ export default function AboutSection() {
     <section className="bg-white py-24 text-black">
       <div className="mx-auto max-w-6xl px-6 md:px-12">
         {/* ==================== SECTION HEADER ==================== */}
-        <div className="flex flex-col items-center text-center mb-16">
-          <div className="inline-flex items-center gap-3 mb-4">
-            <div className="h-px w-12 bg-black/30" />
-            <User className="w-7 h-7 text-black" />
-            <div className="h-px w-12 bg-black/30" />
-          </div>
-
-          <h2 className="font-futura text-5xl md:text-6xl tracking-tighter font-light">
-            About Me
-          </h2>
-
-          <p className="mt-4 text-xl text-gray-600 max-w-md">
-            Driven by curiosity, built for impact
-          </p>
-        </div>
+        <SectionHeader
+          number="01"
+          category="Background"
+          title="About Me"
+          description="Driven by curiosity, built for impact"
+        />
         {/* ======================================================= */}
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
