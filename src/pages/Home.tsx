@@ -1,5 +1,6 @@
 import Navbar from "../components/Navbar";
 import AboutSection from "../components/Sections/AboutSection";
+import CombinedFooter from "../components/Sections/CombinedSections";
 import HeroSection from "../components/Sections/HeroSection";
 import ProjectsSection from "../components/Sections/ProjectsSection";
 import TechnicalSkills from "../components/Sections/SkillsSection";
@@ -38,6 +39,7 @@ function Home() {
       <AboutSection />
       <TechnicalSkills/>
       <ProjectsSection projects={sampleProjects} />
+      <CombinedFooter/>
     </>
   );
 }
