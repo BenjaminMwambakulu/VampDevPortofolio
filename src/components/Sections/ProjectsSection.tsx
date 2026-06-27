@@ -10,7 +10,7 @@ export interface Project {
   description: string;
   techStack: string[];
   image: string;
-  liveDemo: string;
+  liveDemo?: string;
   hasCaseStudy?: boolean;
   caseStudyLink?: string;
 }
