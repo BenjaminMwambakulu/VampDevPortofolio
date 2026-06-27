@@ -1,4 +1,3 @@
-// ProjectCard.tsx
 import { Link } from "react-router-dom";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 
@@ -17,18 +16,11 @@ interface ProjectCardProps {
   reversed?: boolean;
 }
 
-export default function ProjectCard({
-  project,
-  reversed = false,
-}: ProjectCardProps) {
+export default function ProjectCard({ project, reversed = false }: ProjectCardProps) {
   return (
-    <div
-      className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center ${reversed ? "lg:flex-row-reverse" : ""}`}
-    >
+    <div className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center ${reversed ? "lg:flex-row-reverse" : ""}`}>
       {/* Content */}
-      <div
-        className={`lg:col-span-5 ${reversed ? "lg:order-2" : "lg:order-1"} space-y-6`}
-      >
+      <div className={`lg:col-span-5 ${reversed ? "lg:order-2" : "lg:order-1"} space-y-6`}>
         <div className="space-y-3">
           <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-neutral-400">
             <span className="h-px w-6 bg-neutral-300" />
@@ -78,9 +70,7 @@ export default function ProjectCard({
       </div>
 
       {/* Image */}
-      <div
-        className={`lg:col-span-7 ${reversed ? "lg:order-1" : "lg:order-2"}`}
-      >
+      <div className={`lg:col-span-7 ${reversed ? "lg:order-1" : "lg:order-2"}`}>
         <div className="relative overflow-hidden rounded-xl bg-neutral-100 aspect-16/10">
           <img
             src={project.image}

@@ -1,6 +1,7 @@
 // ProjectsSection.tsx
 import React, { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { FolderOpen } from "lucide-react";
 import ProjectCard from "../ProjectCard";
 
 export interface Project {
@@ -31,22 +32,22 @@ function StickyProject({
   const cardEnd = (index + 1) / totalProjects;
 
   const scale = useTransform(progress, [cardStart, cardEnd], [1, 0.92]);
-  const opacity = useTransform(progress, [cardStart, cardEnd], [1, 0.6]);
+
+  // INCREASED: More space between header and first card
+  const headerHeight = 280; // Increased from 200
+  const topOffset = headerHeight + index * 20;
 
   return (
     <div
-      className="sticky top-0 h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8"
-      style={{ zIndex: index + 1 }}
+      className="sticky flex items-start justify-center px-4 sm:px-6 lg:px-8"
+      style={{
+        top: `${topOffset}px`,
+        height: `calc(100vh - ${topOffset}px)`,
+        zIndex: index + 10,
+      }}
     >
-      {/* Solid background layer — DOES NOT ANIMATE */}
-      <div className="absolute inset-0 bg-neutral-100" />
-
-      {/* Animated content layer */}
-      <motion.div
-        className="relative w-full max-w-6xl"
-        style={{ scale, opacity }}
-      >
-        <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 lg:p-12">
+      <motion.div className="relative w-full max-w-7xl" style={{ scale }}>
+        <div className="bg-white rounded-2xl border border-neutral-100 shadow-[0_8px_40px_-8px_rgba(0,0,0,0.15)] p-6 sm:p-8 lg:p-10">
           <ProjectCard project={project} reversed={index % 2 !== 0} />
         </div>
       </motion.div>
@@ -74,10 +75,27 @@ export default function ProjectsSection({
   return (
     <section
       ref={containerRef}
-      className="relative bg-neutral-200"
-      style={{ height: `${safeProjects.length * 100}vh` }}
+      className="relative bg-white"
+      style={{ height: `${safeProjects.length * 100 + 100}vh` }}
       aria-label="Projects"
     >
+      {/* ==================== STICKY SECTION HEADER ==================== */}
+      <div className="sticky top-0 z-5 flex flex-col items-center text-center pt-20 pb-10 bg-white">
+        <div className="inline-flex items-center gap-3 mb-4">
+          <div className="h-px w-12 bg-black/30" />
+          <FolderOpen className="w-7 h-7 text-black" />
+          <div className="h-px w-12 bg-black/30" />
+        </div>
+
+        <h2 className="font-futura text-5xl md:text-6xl tracking-tighter font-light">
+          Projects
+        </h2>
+
+        <p className="mt-4 text-xl text-gray-600 max-w-md">
+          Selected work from recent years
+        </p>
+      </div>
+
       {safeProjects.map((project, index) => (
         <StickyProject
           key={project.id}
