@@ -24,7 +24,7 @@ export default function HeroSection() {
               </h1>
 
               <p className="mt-6 text-lg md:text-xl leading-relaxed text-white/90 font-light max-w-2xl">
-                I'm Benjamin Mwambakulu, a passionate full stack developer based
+                I'm Benjamin Mwambakulu (VampDev), a passionate full stack developer based
                 in Malawi. I craft modern web applications with React, Laravel,
                 and Node.js, and build delightful cross-platform mobile apps
                 with Flutter. I also work with PostgreSQL, MongoDB, Python, and
