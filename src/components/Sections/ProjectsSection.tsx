@@ -39,7 +39,7 @@ function StickyProject({
 
   return (
     <div
-      className="sticky flex items-start justify-center px-4 sm:px-6 lg:px-8"
+      className="sticky flex items-start justify-center"
       style={{
         top: `${topOffset}px`,
         height: `calc(100vh - ${topOffset}px)`,
@@ -74,14 +74,14 @@ export default function ProjectsSection({
 
   return (
     <section
+      id="projects"
       ref={containerRef}
       className="relative bg-white"
-      style={{ height: `${safeProjects.length * 100 + 100}vh` }}
       aria-label="Projects"
     >
-      {/* ==================== STICKY SECTION HEADER ==================== */}
-      <div className="sticky top-0 z-5 bg-white px-4 pt-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
+        {/* ==================== STICKY SECTION HEADER ==================== */}
+        <div className="sticky top-0 z-5 bg-white pt-20">
           <SectionHeader
             number="03"
             category="Featured Work"
@@ -89,17 +89,17 @@ export default function ProjectsSection({
             description="Selected work from recent years"
           />
         </div>
-      </div>
 
-      {safeProjects.map((project, index) => (
-        <StickyProject
-          key={project.id}
-          project={project}
-          index={index}
-          totalProjects={safeProjects.length}
-          progress={scrollYProgress}
-        />
-      ))}
+        {safeProjects.map((project, index) => (
+          <StickyProject
+            key={project.id}
+            project={project}
+            index={index}
+            totalProjects={safeProjects.length}
+            progress={scrollYProgress}
+          />
+        ))}
+      </div>
     </section>
   );
 }

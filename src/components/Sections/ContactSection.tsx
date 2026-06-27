@@ -19,7 +19,10 @@ export default function ContactSection() {
   };
 
   return (
-    <section className="py-24 bg-white text-neutral-900 select-none">
+    <section
+      id="contact"
+      className="bg-white text-neutral-900 select-none border-b border-neutral-100 pb-20"
+    >
       <SectionHeader
         number="05"
         category="Collaboration"

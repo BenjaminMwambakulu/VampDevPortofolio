@@ -5,14 +5,16 @@ import { ArrowDown, FileText } from "lucide-react";
 import SectionHeader from "../SectionHeader";
 
 const documents = [
-  { name: "Curriculum Vitae", type: "PDF / 1.2 MB", href: "#" },
-  { name: "Academic Transcripts", type: "PDF / 3.4 MB", href: "#" },
-  { name: "GCI World Data Science Validation", type: "PDF / 850 KB", href: "#" },
+  {
+    name: "Resume",
+    type: "PDF / Google Drive",
+    href: "https://drive.google.com/uc?export=download&id=1lbFkZJUrYBVlejDJfG3irnOw5CRwEDxy",
+  },
 ];
 
 export default function CredentialsSection() {
   return (
-    <section className="pb-24 border-b border-neutral-100">
+    <section className="border-b border-neutral-100 pb-20">
       <SectionHeader
         number="04"
         category="Credentials"

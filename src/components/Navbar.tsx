@@ -1,22 +1,32 @@
-import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import getImage from "../utils/getImage";
 
 const NAVLINKS = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Projects", href: "/projects" },
-  { name: "Contact", href: "/contact" },
+  { name: "Home", sectionId: "home" },
+  { name: "About", sectionId: "about" },
+  { name: "Skills", sectionId: "skills" },
+  { name: "Projects", sectionId: "projects" },
+  { name: "Contact", sectionId: "contact" },
 ];
 
 export default function Navbar() {
-  const location = useLocation();
   const [isOverHero, setIsOverHero] = useState(true);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     const updateNavbarTheme = () => {
       const heroThreshold = window.innerHeight - 96;
       setIsOverHero(window.scrollY < heroThreshold);
+
+      const currentSection = NAVLINKS.reduce((active, link) => {
+        const section = document.getElementById(link.sectionId);
+        if (!section) return active;
+
+        const sectionTop = section.offsetTop - 140;
+        return window.scrollY >= sectionTop ? link.sectionId : active;
+      }, "home");
+
+      setActiveSection(currentSection);
     };
 
     updateNavbarTheme();
@@ -28,6 +38,15 @@ export default function Navbar() {
       window.removeEventListener("resize", updateNavbarTheme);
     };
   }, []);
+
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    const navOffset = 104;
+    const top = section.getBoundingClientRect().top + window.scrollY - navOffset;
+    window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+  };
 
   const topLineClass = isOverHero
     ? "via-white/30"
@@ -65,7 +84,11 @@ export default function Navbar() {
         >
           <div className="flex h-16 items-center justify-between px-8">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 group">
+            <button
+              type="button"
+              onClick={() => scrollToSection("home")}
+              className="flex items-center gap-3 group"
+            >
               <div className="relative">
                 <img
                   src={getImage(logoImage)}
@@ -78,16 +101,17 @@ export default function Navbar() {
               >
                 VampDev
               </span>
-            </Link>
+            </button>
 
             {/* Navigation */}
             <ul className="flex items-center gap-8 text-sm font-medium">
               {NAVLINKS.map((link) => {
-                const isActive = location.pathname === link.href;
+                const isActive = activeSection === link.sectionId;
                 return (
-                  <li key={link.href}>
-                    <Link
-                      to={link.href}
+                  <li key={link.sectionId}>
+                    <button
+                      type="button"
+                      onClick={() => scrollToSection(link.sectionId)}
                       className={`
                         relative px-4 py-2 transition-all duration-300
                         ${linkClass}
@@ -100,7 +124,7 @@ export default function Navbar() {
                           className={`absolute bottom-1.5 left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full transition-colors duration-300 ${activeIndicatorClass}`}
                         />
                       )}
-                    </Link>
+                    </button>
                   </li>
                 );
               })}
@@ -108,6 +132,8 @@ export default function Navbar() {
               {/* CTA Button */}
               <li>
                 <button
+                  type="button"
+                  onClick={() => scrollToSection("contact")}
                   className={`
                     rounded-2xl px-6 py-2.5 text-sm font-semibold 
                     shadow-lg transition-all duration-300

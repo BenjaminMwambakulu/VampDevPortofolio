@@ -1,4 +1,4 @@
-import { Server, Layout, BarChart3, Terminal } from 'lucide-react';
+import { Server, Layout, BarChart3, Terminal } from "lucide-react";
 import SectionHeader from "../SectionHeader";
 import {
   GlassCard,
@@ -13,7 +13,8 @@ const TechnicalSkills = () => {
       icon: Server,
       title: "Backend & Database",
       subtitle: "Core Strength",
-      description: "I specialize in architecting secure, scalable server-side systems, designing relational and non-relational schemas, and building robust RESTful APIs.",
+      description:
+        "I specialize in architecting secure, scalable server-side systems, designing relational and non-relational schemas, and building robust RESTful APIs.",
       items: [
         "Node.js (ExpressJS), Laravel (PHP), Python",
         "PostgreSQL, MySQL , MongoDB, Supabase, Firebase, Appwrite",
@@ -23,7 +24,8 @@ const TechnicalSkills = () => {
     {
       icon: Layout,
       title: "Frontend & Mobile",
-      description: "I build responsive, highly-interactive user interfaces with clean architecture, excellent state management, and pixel-perfect implementation.",
+      description:
+        "I build responsive, highly-interactive user interfaces with clean architecture, excellent state management, and pixel-perfect implementation.",
       items: [
         "React.js (Context API), Tailwind CSS",
         "Flutter (Provider State Management)",
@@ -33,7 +35,8 @@ const TechnicalSkills = () => {
     {
       icon: BarChart3,
       title: "Data Science & BI",
-      description: "Turning raw data into intelligent insights and executive dashboards that drive real business decisions.",
+      description:
+        "Turning raw data into intelligent insights and executive dashboards that drive real business decisions.",
       items: [
         "Python for Data Analysis & ML",
         "Power BI – Interactive Dashboards",
@@ -43,18 +46,15 @@ const TechnicalSkills = () => {
     {
       icon: Terminal,
       title: "DevOps & Workflow",
-      description: "Streamlined development environments, version control, and deployment practices for reliable delivery.",
-      items: [
-        "Linux, Docker",
-        "Git & GitHub",
-        "CI/CD Fundamentals",
-      ],
+      description:
+        "Streamlined development environments, version control, and deployment practices for reliable delivery.",
+      items: ["Linux, Docker", "Git & GitHub", "CI/CD Fundamentals"],
     },
   ];
 
   return (
-    <section className="bg-white py-24 text-black">
-      <div className="max-w-6xl mx-auto px-6 md:px-12">
+    <section id="skills" className="bg-white py-24 text-black">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Section Header */}
         <SectionHeader
           number="02"
@@ -98,7 +98,10 @@ const TechnicalSkills = () => {
                   <div className="pt-4 border-t border-gray-200">
                     <ul className="space-y-3">
                       {skill.items.map((item, i) => (
-                        <li key={i} className="flex items-start gap-3 text-gray-700">
+                        <li
+                          key={i}
+                          className="flex items-start gap-3 text-gray-700"
+                        >
                           <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-black/60 shrink-0" />
                           <span>{item}</span>
                         </li>

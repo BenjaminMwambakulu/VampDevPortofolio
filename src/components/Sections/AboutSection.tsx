@@ -3,8 +3,8 @@ import getImage from "../../utils/getImage";
 
 export default function AboutSection() {
   return (
-    <section className="bg-white py-24 text-black">
-      <div className="mx-auto max-w-6xl px-6 md:px-12">
+    <section id="about" className="bg-white py-24 text-black">
+      <div className="mx-auto max-w-7xl px-6 md:px-12">
         {/* ==================== SECTION HEADER ==================== */}
         <SectionHeader
           number="01"
@@ -16,7 +16,7 @@ export default function AboutSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           {/* LEFT: Story */}
-          <div className="lg:col-span-7 space-y-6 text-[17px] leading-relaxed text-black/80">
+          <div className="lg:col-span-7 space-y-6 text-[17px] leading-relaxed text-neutral-600">
             <h3 className="text-4xl font-semibold tracking-tight text-black font-futura">
               Bridging Code, Design, and Business Intelligence
             </h3>
@@ -59,10 +59,6 @@ export default function AboutSection() {
             <p className="text-black/70">
               When I’m away from my IDE, you’ll usually find me gaming, watching
               football, listening to music, or exploring the latest tech trends.
-            </p>
-
-            <p className="font-medium text-black pt-4">
-              Want to collaborate on a project or discuss a role? Let’s connect!
             </p>
           </div>
 

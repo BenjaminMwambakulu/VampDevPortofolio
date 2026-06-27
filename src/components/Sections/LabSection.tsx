@@ -26,7 +26,7 @@ const metrics = [
 export default function MetricsSection() {
   return (
     <section className="py-28 bg-neutral-900 text-white border-t border-neutral-800">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="max-w-xl mb-20">
           <span className="text-[11px] tracking-[0.15em] uppercase text-neutral-500 font-semibold block mb-3">

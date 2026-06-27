@@ -11,8 +11,7 @@ export default function SocialConnect() {
 
   return (
     <section className="py-20 bg-white select-none">
-      <div className="max-w-6xl mx-auto px-6">
-        
+      <div className="max-w-7xl mx-auto px-6">
         {/* Row Layout for Social Directory */}
         <div className="border-t border-neutral-100 divide-y divide-neutral-100">
           {linksArray.map((link, idx) => (
@@ -44,18 +43,17 @@ export default function SocialConnect() {
               </div>
 
               {/* Minimalist Apple-style Hover Background Slide */}
-              <motion.div 
+              <motion.div
                 className="absolute inset-0 bg-neutral-50/60 z-0 origin-left"
                 initial={{ scaleX: 0 }}
                 variants={{
-                  hover: { scaleX: 1 }
+                  hover: { scaleX: 1 },
                 }}
                 transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
               />
             </motion.a>
           ))}
         </div>
-
       </div>
     </section>
   );

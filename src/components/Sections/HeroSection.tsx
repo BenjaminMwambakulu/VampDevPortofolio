@@ -1,9 +1,18 @@
-import { Link } from "react-router-dom";
 import GradientBlur from "../GradientBlur";
 import getImage from "../../utils/getImage";
 export default function HeroSection() {
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    const navOffset = 104;
+    const top = section.getBoundingClientRect().top + window.scrollY - navOffset;
+    window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+  };
+
   return (
     <section
+      id="home"
       className="relative min-h-screen overflow-hidden bg-cover bg-center bg-no-repeat pt-4"
       style={{ backgroundImage: `url(${getImage("home.png")})` }}
     >
@@ -33,22 +42,20 @@ export default function HeroSection() {
 
               {/* CTA Buttons */}
               <div className="mt-10 flex flex-wrap gap-4">
-                <Link
-                  to="/projects"
+                <button
+                  type="button"
+                  onClick={() => scrollToSection("projects")}
                   className="group flex items-center gap-3 rounded-2xl bg-white px-8 py-4 text-base font-semibold text-black transition-all hover:bg-white/90 hover:scale-105 active:scale-95"
                 >
                   View My Projects
                   <span className="transition-transform group-hover:translate-x-1">
                     →
                   </span>
-                </Link>
+                </button>
 
                 <button
-                  onClick={() =>
-                    document
-                      .getElementById("contact")
-                      ?.scrollIntoView({ behavior: "smooth" })
-                  }
+                  type="button"
+                  onClick={() => scrollToSection("contact")}
                   className="rounded-2xl border border-white/40 px-8 py-4 text-base font-medium text-white backdrop-blur-md transition hover:bg-white/10"
                 >
                   Let's Work Together

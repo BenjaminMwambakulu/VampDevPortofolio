@@ -17,7 +17,7 @@ export default function FooterBillboard() {
   );
 
   return (
-    <section className="pt-16 border-t border-neutral-100 select-none mb-16 relative">
+    <section className="select-none relative">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-xs font-mono text-neutral-500 mb-16">
         <div className="flex items-center gap-3">
           <div className="w-6 h-6 bg-neutral-950 rounded-lg flex items-center justify-center overflow-hidden shadow-sm p-1">
