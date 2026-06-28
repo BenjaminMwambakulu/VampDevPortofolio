@@ -89,25 +89,10 @@ export default function HeroSection() {
                 </motion.button>
               </div>
             </motion.div>
-
-            {/* Subtle tagline */}
-            <motion.p
-              className="pl-2 text-sm uppercase tracking-[3px] text-white/50 font-medium"
-              variants={footer}
-            >
-              Based in Malawi • Available Worldwide
-            </motion.p>
           </div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 md:block">
-        <div className="flex flex-col items-center gap-2 text-white/40">
-          <span className="text-xs tracking-widest">SCROLL</span>
-          <div className="h-8 w-px bg-linear-to-b from-transparent via-white/40 to-transparent" />
-        </div>
-      </div>
     </motion.section>
   );
 }

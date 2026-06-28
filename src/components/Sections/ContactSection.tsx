@@ -46,8 +46,14 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="bg-white text-neutral-900 select-none border-b border-neutral-100 pb-20 mx-auto max-w-screen-2xl px-6 md:px-12 lg:px-20"
+      className="bg-white text-neutral-900 select-none border-b border-neutral-100 pb-20 mx-auto max-w-screen-2xl px-6 md:px-12 lg:px-20 overflow-hidden"
     >
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      >
       <SectionHeader
         number="05"
         category="Collaboration"
@@ -170,6 +176,7 @@ export default function ContactSection() {
           </form>
         </div>
       </div>
+      </motion.div>
     </section>
   );
 }

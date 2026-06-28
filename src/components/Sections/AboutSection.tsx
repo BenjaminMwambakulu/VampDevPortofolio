@@ -1,10 +1,17 @@
+import { motion } from "framer-motion";
 import SectionHeader from "../SectionHeader";
 import getImage from "../../utils/getImage";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="bg-white py-24 text-black">
-      <div className="mx-auto max-w-7xl px-6 md:px-12">
+    <section id="about" className="bg-white py-24 text-black overflow-hidden">
+      <motion.div 
+        className="mx-auto max-w-7xl px-6 md:px-12"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      >
         {/* ==================== SECTION HEADER ==================== */}
         <SectionHeader
           number="01"
@@ -137,7 +144,7 @@ export default function AboutSection() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

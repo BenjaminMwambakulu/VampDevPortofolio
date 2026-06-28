@@ -1,5 +1,6 @@
 import { Server, Layout, BarChart3, Terminal } from "lucide-react";
 import SectionHeader from "../SectionHeader";
+import { motion } from "framer-motion";
 import {
   GlassCard,
   GlassCardHeader,
@@ -53,8 +54,14 @@ const TechnicalSkills = () => {
   ];
 
   return (
-    <section id="skills" className="bg-white py-24 text-black">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section id="skills" className="bg-white py-24 text-black overflow-hidden">
+      <motion.div 
+        className="max-w-7xl mx-auto px-6 md:px-12"
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      >
         {/* Section Header */}
         <SectionHeader
           number="02"
@@ -113,7 +120,7 @@ const TechnicalSkills = () => {
             );
           })}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
