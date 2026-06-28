@@ -1,10 +1,10 @@
 // Framer Motion variant definitions for the HeroSection
-// We avoid importing the `Variants` type directly to keep compatibility with the Vite build.
+import type { Variants } from "framer-motion";
 
 /* -------------------------------------------------
    Global parent container – controls stagger timing
  ------------------------------------------------- */
-export const container = {
+export const container: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -17,7 +17,7 @@ export const container = {
 /* -------------------------------------------------
    Navbar – slide‑down + fade‑in
  ------------------------------------------------- */
-export const navbar = {
+export const navbar: Variants = {
   hidden: { y: -30, opacity: 0 },
   visible: {
     y: 0,
@@ -33,7 +33,7 @@ export const navbar = {
 /* -------------------------------------------------
    Background portrait – subtle scale‑up & fade‑in
  ------------------------------------------------- */
-export const portrait = {
+export const portrait: Variants = {
   hidden: { scale: 1.05, opacity: 0 },
   visible: {
     scale: 1,
@@ -48,7 +48,7 @@ export const portrait = {
 /* -------------------------------------------------
    Card – background glassmorphism
  ------------------------------------------------- */
-export const cardBg = {
+export const cardBg: Variants = {
   hidden: { y: 20, opacity: 0 },
   visible: {
     y: 0,
@@ -60,7 +60,7 @@ export const cardBg = {
 /* -------------------------------------------------
    Heading – fade‑up
  ------------------------------------------------- */
-export const heading = {
+export const heading: Variants = {
   hidden: { y: 30, opacity: 0 },
   visible: {
     y: 0,
@@ -72,7 +72,7 @@ export const heading = {
 /* -------------------------------------------------
    Paragraph – fade‑up (slightly later)
  ------------------------------------------------- */
-export const paragraph = {
+export const paragraph: Variants = {
   hidden: { y: 20, opacity: 0 },
   visible: {
     y: 0,
@@ -84,7 +84,7 @@ export const paragraph = {
 /* -------------------------------------------------
    Buttons – slide‑up together, primary a touch snappier
  ------------------------------------------------- */
-export const btnPrimary = {
+export const btnPrimary: Variants = {
   hidden: { y: 20, opacity: 0 },
   visible: {
     y: 0,
@@ -93,7 +93,7 @@ export const btnPrimary = {
   },
 };
 
-export const btnSecondary = {
+export const btnSecondary: Variants = {
   hidden: { y: 20, opacity: 0 },
   visible: {
     y: 0,
@@ -110,7 +110,7 @@ export const btnSecondary = {
 /* -------------------------------------------------
    Footer text – slow fade‑in, appears last
  ------------------------------------------------- */
-export const footer = {
+export const footer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 0.5,

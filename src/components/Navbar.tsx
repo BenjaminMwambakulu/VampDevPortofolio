@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
 import getImage from "../utils/getImage";
 
 const NAVLINKS = [
@@ -9,13 +9,13 @@ const NAVLINKS = [
   { name: "Projects", sectionId: "projects" },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: { y: -150, scaleY: 1.3, scaleX: 0.8, opacity: 0 },
   visible: { y: 0, scaleY: 1, scaleX: 1, opacity: 1 },
 };
 
 // Mobile menu drawer animation
-const drawerVariants = {
+const drawerVariants: Variants = {
   hidden: { opacity: 0, y: -8, scale: 0.97 },
   visible: {
     opacity: 1,
@@ -32,10 +32,10 @@ const drawerVariants = {
 };
 
 // Stagger children for mobile links
-const listVariants = {
+const listVariants: Variants = {
   visible: { transition: { staggerChildren: 0.05, delayChildren: 0.05 } },
 };
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, x: -12 },
   visible: { opacity: 1, x: 0, transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] } },
 };

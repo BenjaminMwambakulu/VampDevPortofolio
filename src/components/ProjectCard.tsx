@@ -5,7 +5,7 @@ export interface Project {
   title: string;
   description: string;
   image: string;
-  liveDemo: string;
+  liveDemo?: string;
   hasCaseStudy?: boolean;
   caseStudyLink?: string;
   techStack: string[];
