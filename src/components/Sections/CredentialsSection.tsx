@@ -8,8 +8,8 @@ const documents = [
   {
     name: "Curriculum Vitae",
     type: "PDF / Verified Version",
-    size: "1.2 MB",
-    href: "https://drive.google.com/uc?export=download&id=1feb_20wbtIU4w9nwFM59p5FdET44S7WB",
+    size: "66 kb",
+    href: "https://drive.google.com/uc?export=download&id=1YFmtL5t10ZeAnpj9DeYLhzW6d52JT0jO",
     tag: "Core Profile",
   },
   // Add space for future credentials you might want to showcase later
