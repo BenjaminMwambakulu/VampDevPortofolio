@@ -55,8 +55,17 @@ function Home() {
         "A clean and conversion-focused landing page template for SaaS products, showcasing key features, pricing plans, customer testimonials, and compelling calls to action to maximize user engagement.",
       image: getImage("appTemplate.png"),
       techStack: ["React", "Tailwind CSS", "TypeScript"],
-      liveDemo: "https://organizationlandingpage.appwrite.network/",
+      liveDemo: "https://app-landing-template.vercel.app/",
     },
+    {
+      id: "5",
+      title: "Organisation Landing Page Template",
+      description:
+        "A professional and visually appealing landing page template for organizations, highlighting mission statements, services, team members, and contact information to effectively communicate the organization's purpose and values.",
+      image: getImage("orgTemplate.png"),
+      techStack: ["React", "Tailwind CSS", "TypeScript"],
+      liveDemo: "https://organizationlandingpage.appwrite.network/",
+    }
   ];
   return (
     <>

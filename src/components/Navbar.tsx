@@ -6,8 +6,7 @@ const NAVLINKS = [
   { name: "Home", sectionId: "home" },
   { name: "About", sectionId: "about" },
   { name: "Skills", sectionId: "skills" },
-  { name: "Projects", sectionId: "projects" },
-  { name: "Contact", sectionId: "contact" },
+  { name: "Projects", sectionId: "projects" }
 ];
 
 // Cleaned up variants with fluid, liquid physics baked directly in
@@ -99,7 +98,7 @@ export default function Navbar() {
           className={`
             relative mt-3 rounded-3xl border ${navShellClass}
             shadow-2xl backdrop-blur-2xl
-            transition-colors duration-300 /* REMOVED transition-all to fix Framer jank */
+            transition-colors duration-300 /* REMOVED to fix Framer jank */
           `}
         >
           <div className="flex h-16 items-center justify-between px-8">
