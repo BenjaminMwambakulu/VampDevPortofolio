@@ -8,7 +8,7 @@ const documents = [
   {
     name: "Resume",
     type: "PDF / Google Drive",
-    href: "https://drive.google.com/uc?export=download&id=1lbFkZJUrYBVlejDJfG3irnOw5CRwEDxy",
+    href: "https://drive.google.com/uc?export=download&id=1feb_20wbtIU4w9nwFM59p5FdET44S7WB",
   },
 ];
 
