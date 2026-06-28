@@ -1,6 +1,8 @@
+import { useEffect, useState } from "react";
 import GradientBlur from "../GradientBlur";
-import getImage from "../../utils/getImage";
 import { motion } from "framer-motion";
+import desktopBg from "../../assets/home.png";
+import mobileBg from "../../assets/mobileBg.png";
 import {
   container,
   cardBg,
@@ -8,10 +10,20 @@ import {
   paragraph,
   btnPrimary,
   btnSecondary,
-  footer,
 } from "../HeroSection/HeroVariants";
 
 export default function HeroSection() {
+  const [isMobile, setIsMobile] = useState(
+    () => window.matchMedia("(max-width: 767px)").matches
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (!section) return;
@@ -25,7 +37,7 @@ export default function HeroSection() {
     <motion.section
       id="home"
       className="relative min-h-screen overflow-hidden bg-cover bg-center bg-no-repeat pt-4"
-      style={{ backgroundImage: `url(${getImage("home.png")})` }}
+      style={{ backgroundImage: `url(${isMobile ? mobileBg : desktopBg})` }}
       variants={container}
       initial="hidden"
       animate="visible"
@@ -42,12 +54,12 @@ export default function HeroSection() {
           <div className="max-w-3xl">
             {/* Glassmorphic Content Card */}
             <motion.div
-              className="mb-10 rounded-3xl border border-white/20 bg-white/10 p-10 md:p-12 backdrop-blur-2xl shadow-2xl shadow-black/60"
+              className="mb-10 rounded-3xl border border-white/20 bg-white/10 p-5 sm:p-8 md:p-12 backdrop-blur-2xl shadow-2xl shadow-black/60"
               variants={cardBg}
             >
               {/* Heading */}
               <motion.h1
-                className="font-futura text-6xl md:text-7xl font-light tracking-tighter text-white leading-none"
+                className="font-futura text-3xl sm:text-5xl md:text-7xl font-light tracking-tighter text-white leading-none"
                 variants={heading}
               >
                 Full Stack Developer
@@ -66,23 +78,21 @@ export default function HeroSection() {
               </motion.p>
 
               {/* CTA Buttons */}
-              <div className="mt-10 flex flex-wrap gap-4">
+              <div className="mt-5 sm:mt-10 flex gap-3">
                 <motion.button
                   type="button"
                   onClick={() => scrollToSection("projects")}
-                  className="group flex items-center gap-3 rounded-2xl bg-white px-8 py-4 text-base font-semibold text-black transition-all hover:bg-white/90 hover:scale-105 active:scale-95"
+                  className="group flex items-center gap-2 rounded-2xl bg-white px-5 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-semibold text-black transition-all hover:bg-white/90 hover:scale-105 active:scale-95"
                   variants={btnPrimary}
                 >
                   View My Projects
-                  <span className="transition-transform group-hover:translate-x-1">
-                    →
-                  </span>
+                  <span className="transition-transform group-hover:translate-x-1">→</span>
                 </motion.button>
 
                 <motion.button
                   type="button"
                   onClick={() => scrollToSection("contact")}
-                  className="rounded-2xl border border-white/40 px-8 py-4 text-base font-medium text-white backdrop-blur-md transition hover:bg-white/10"
+                  className="rounded-2xl border border-white/40 px-5 py-3 sm:px-8 sm:py-4 text-sm sm:text-base font-medium text-white backdrop-blur-md transition hover:bg-white/10"
                   variants={btnSecondary}
                 >
                   Let&#39;s Work Together
