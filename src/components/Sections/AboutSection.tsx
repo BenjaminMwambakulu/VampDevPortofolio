@@ -1,29 +1,40 @@
 import { motion } from "framer-motion";
 import SectionHeader from "../SectionHeader";
 import getImage from "../../utils/getImage";
+import {
+  fadeUp,
+  slideFromRight,
+  staggerContainer,
+  defaultViewport,
+} from "../motionVariants";
 
 export default function AboutSection() {
   return (
     <section id="about" className="bg-white py-24 text-black overflow-hidden">
-      <motion.div 
+      <motion.div
         className="mx-auto max-w-7xl px-6 md:px-12"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.15 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={defaultViewport}
       >
         {/* ==================== SECTION HEADER ==================== */}
-        <SectionHeader
-          number="01"
-          category="Background"
-          title="About Me"
-          description="Driven by curiosity, built for impact"
-        />
+        <motion.div variants={fadeUp}>
+          <SectionHeader
+            number="01"
+            category="Background"
+            title="About Me"
+            description="Driven by curiosity, built for impact"
+          />
+        </motion.div>
         {/* ======================================================= */}
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           {/* LEFT: Story */}
-          <div className="lg:col-span-7 space-y-6 text-[17px] leading-relaxed text-neutral-600">
+          <motion.div
+            variants={fadeUp}
+            className="lg:col-span-7 space-y-6 text-[17px] leading-relaxed text-neutral-600"
+          >
             <h3 className="text-4xl font-semibold tracking-tight text-black font-futura">
               Bridging Code, Design, and Business Intelligence
             </h3>
@@ -67,10 +78,10 @@ export default function AboutSection() {
               When I’m away from my IDE, you’ll usually find me gaming, watching
               football, listening to music, or exploring the latest tech trends.
             </p>
-          </div>
+          </motion.div>
 
           {/* RIGHT: Quick Overview Glass Card */}
-          <div className="lg:col-span-5">
+          <motion.div variants={slideFromRight} className="lg:col-span-5">
             <div className="sticky top-8 overflow-hidden rounded-3xl bg-white/75 backdrop-blur-2xl border border-white/60 shadow-[0_8px_40px_-8px_rgb(0,0,0,0.08)] transition-all duration-500 hover:shadow-[0_20px_60px_-10px_rgb(0,0,0,0.12)]">
               {/* Image Section */}
               <div className="relative overflow-hidden group aspect-5/4 lg:aspect-square">
@@ -142,7 +153,7 @@ export default function AboutSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </motion.div>
     </section>

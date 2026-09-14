@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { MotionConfig } from "framer-motion";
 import Home from "./pages/Home";
 
 
@@ -6,9 +7,11 @@ import Home from "./pages/Home";
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-      </Routes>
+      <MotionConfig reducedMotion="user">
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </MotionConfig>
     </BrowserRouter>
   );
 }

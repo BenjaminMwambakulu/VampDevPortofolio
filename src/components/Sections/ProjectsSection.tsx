@@ -1,8 +1,14 @@
 // ProjectsSection.tsx
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useRef, useState } from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useMotionValueEvent,
+} from "framer-motion";
 import ProjectCard from "../ProjectCard";
 import SectionHeader from "../SectionHeader";
+import { fadeUp, defaultViewport } from "../motionVariants";
 
 export interface Project {
   id: string;
@@ -63,14 +69,27 @@ export default function ProjectsSection({
   projects,
 }: ProjectsSectionProps): React.ReactElement | null {
   const safeProjects = projects ?? [];
-  if (safeProjects.length === 0) return null;
 
   const containerRef = useRef<HTMLElement>(null);
+  const [activeIndex, setActiveIndex] = useState(1);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
+
+  useMotionValueEvent(scrollYProgress, "change", (progress) => {
+    if (safeProjects.length === 0) return;
+    const next = Math.min(
+      Math.max(Math.floor(progress * safeProjects.length) + 1, 1),
+      safeProjects.length
+    );
+    setActiveIndex(next);
+  });
+
+  if (safeProjects.length === 0) return null;
+
+  const pad = (n: number) => String(n).padStart(2, "0");
 
   return (
     <section
@@ -81,14 +100,30 @@ export default function ProjectsSection({
     >
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         {/* ==================== STICKY SECTION HEADER ==================== */}
-        <div className="sticky top-0 z-5 bg-white pt-20">
-          <SectionHeader
-            number="03"
-            category="Featured Work"
-            title="Projects"
-            description="Selected work from recent years"
-          />
-        </div>
+        <motion.div
+          className="sticky top-0 z-5 bg-white pt-20"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={defaultViewport}
+        >
+          <div className="flex items-start justify-between gap-6">
+            <SectionHeader
+              number="03"
+              category="Featured Work"
+              title="Projects"
+              description="Selected work from recent years"
+            />
+            <div
+              className="mt-10 font-mono text-sm tracking-[0.2em] text-neutral-400 select-none whitespace-nowrap"
+              aria-live="polite"
+            >
+              <span className="text-neutral-900">{pad(activeIndex)}</span>
+              {" / "}
+              {pad(safeProjects.length)}
+            </div>
+          </div>
+        </motion.div>
 
         {safeProjects.map((project, index) => (
           <StickyProject

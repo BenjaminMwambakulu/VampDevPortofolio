@@ -3,6 +3,12 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, FileText, Download, Award } from "lucide-react";
 import SectionHeader from "../SectionHeader";
+import {
+  fadeUp,
+  slideFromLeft,
+  staggerContainer,
+  defaultViewport,
+} from "../motionVariants";
 
 const documents = [
   {
@@ -29,17 +35,25 @@ export default function CredentialsSection() {
       id="credentials"
       className="border-b border-neutral-100 pb-20 mx-auto max-w-screen-2xl px-6 md:px-12 lg:px-20"
     >
-      <SectionHeader
-        number="04"
-        category="Credentials"
-        title="Verified Documents"
-        description="Direct access to my academic records, professional certifications, and detailed background parameters."
-      />
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={defaultViewport}
+      >
+        <motion.div variants={fadeUp}>
+          <SectionHeader
+            number="04"
+            category="Credentials"
+            title="Verified Documents"
+            description="Direct access to my academic records, professional certifications, and detailed background parameters."
+          />
+        </motion.div>
 
-      {/* Asymmetric Structural Grid Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mt-12 items-stretch">
-        {/* Left Side: Context / Stats Card */}
-        <div className="md:col-span-4 bg-neutral-950 text-white rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden group min-h-60 md:min-h-auto">
+        {/* Asymmetric Structural Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 mt-12 items-stretch">
+          {/* Left Side: Context / Stats Card */}
+          <motion.div variants={slideFromLeft} className="md:col-span-4 bg-neutral-950 text-white rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden group min-h-60 md:min-h-auto">
           <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700" />
 
           <div className="space-y-2 relative z-10">
@@ -54,17 +68,15 @@ export default function CredentialsSection() {
               records.
             </h3>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Side: Interactive Editorial Document Links */}
         <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
           {documents.map((doc, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.5 }}
+              variants={fadeUp}
+              transition={{ delay: idx * 0.08 }}
               className={`group relative flex flex-col justify-between p-6 rounded-3xl border transition-all duration-300 min-h-55 ${
                 doc.comingSoon
                   ? "border-neutral-100 bg-neutral-50/20 opacity-60 cursor-not-allowed"
@@ -135,6 +147,7 @@ export default function CredentialsSection() {
           ))}
         </div>
       </div>
+      </motion.div>
     </section>
   );
 }

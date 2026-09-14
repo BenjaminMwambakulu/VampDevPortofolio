@@ -5,6 +5,12 @@ import React, { useState } from "react";
 import SectionHeader from "../SectionHeader";
 import { Send, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 import { sendEmail } from "../../utils/sendEmail";
+import {
+  fadeUp,
+  slideFromLeft,
+  staggerContainer,
+  defaultViewport,
+} from "../motionVariants";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -49,22 +55,25 @@ export default function ContactSection() {
       className="bg-white text-neutral-900 select-none border-b border-neutral-100 pb-20 mx-auto max-w-screen-2xl px-6 md:px-12 lg:px-20 overflow-hidden"
     >
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="max-w-7xl mx-auto px-6 md:px-12"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={defaultViewport}
       >
-      <SectionHeader
-        number="05"
-        category="Collaboration"
-        title="Let's Build"
-        description="Available for remote contracts globally from Lilongwe, Malawi."
-      />
+        <motion.div variants={fadeUp}>
+          <SectionHeader
+            number="05"
+            category="Collaboration"
+            title="Let's Build"
+            description="Available for remote contracts globally from Lilongwe, Malawi."
+          />
+        </motion.div>
 
-      {/* Contact Logic Layout Wrapper */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mt-12">
-        {/* Left Side: Call to Action Header Parameters */}
-        <div className="lg:col-span-5 space-y-8">
+        {/* Contact Logic Layout Wrapper */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start mt-12">
+          {/* Left Side: Call to Action Header Parameters */}
+          <motion.div variants={slideFromLeft} className="lg:col-span-5 space-y-8">
           <h2 className="text-4xl md:text-5xl font-light tracking-tighter text-neutral-900 font-futura max-w-xl leading-[1.15]">
             Have an open ecosystem challenge, internship, or pipeline to build?
           </h2>
@@ -73,10 +82,10 @@ export default function ContactSection() {
             <p>// Operating Asynchronously Globally</p>
             <p>// Response Latency: &lt; 12 Hours</p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Side: High-End Editorial Interactive Form */}
-        <div className="lg:col-span-7 bg-neutral-50/50 border border-neutral-200/50 rounded-3xl p-8 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.01)]">
+        <motion.div variants={fadeUp} className="lg:col-span-7 bg-neutral-50/50 border border-neutral-200/50 rounded-3xl p-8 md:p-10 shadow-[0_8px_30px_rgba(0,0,0,0.01)]">
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Input Row: Name */}
             <div className="relative group">
@@ -174,7 +183,7 @@ export default function ContactSection() {
               </motion.button>
             </div>
           </form>
-        </div>
+        </motion.div>
       </div>
       </motion.div>
     </section>

@@ -7,6 +7,11 @@ import {
   GlassCardTitle,
   GlassCardContent,
 } from "../GlassCard";
+import {
+  fadeUp,
+  staggerContainer,
+  defaultViewport,
+} from "../motionVariants";
 
 const TechnicalSkills = () => {
   const skillCategories = [
@@ -55,30 +60,32 @@ const TechnicalSkills = () => {
 
   return (
     <section id="skills" className="bg-white py-24 text-black overflow-hidden">
-      <motion.div 
+      <motion.div
         className="max-w-7xl mx-auto px-6 md:px-12"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.15 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={defaultViewport}
       >
         {/* Section Header */}
-        <SectionHeader
-          number="02"
-          category="Capabilities"
-          title="Technical Expertise"
-          description="Technologies I use to bring ideas to life"
-        />
+        <motion.div variants={fadeUp}>
+          <SectionHeader
+            number="02"
+            category="Capabilities"
+            title="Technical Expertise"
+            description="Technologies I use to bring ideas to life"
+          />
+        </motion.div>
 
         {/* Skills Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {skillCategories.map((skill, index) => {
             const Icon = skill.icon;
             return (
-              <GlassCard
-                key={index}
-                className="group hover:-translate-y-1 transition-all duration-30"
-              >
+              <motion.div key={index} variants={fadeUp}>
+                <GlassCard
+                  className="group hover:-translate-y-1 transition-all duration-30"
+                >
                 <GlassCardHeader className="pb-6">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-2xl bg-black/5 flex items-center justify-center group-hover:bg-black/10 transition-colors">
@@ -116,7 +123,8 @@ const TechnicalSkills = () => {
                     </ul>
                   </div>
                 </GlassCardContent>
-              </GlassCard>
+                  </GlassCard>
+                </motion.div>
             );
           })}
         </div>

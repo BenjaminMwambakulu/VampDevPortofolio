@@ -1,8 +1,10 @@
 "use client";
 
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { socialLinks } from "../../constants/socialLinks";
 import getImage from "../../utils/getImage";
+import { fadeUp, defaultViewport } from "../motionVariants";
 
 
 export default function FooterBillboard() {
@@ -18,7 +20,13 @@ export default function FooterBillboard() {
 
   return (
     <section className="select-none relative">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-xs font-mono text-neutral-500 mb-16">
+      <motion.div
+        className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 text-xs font-mono text-neutral-500 mb-16"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={defaultViewport}
+      >
         <div className="flex items-center gap-3">
           <div className="w-6 h-6 bg-neutral-950 rounded-lg flex items-center justify-center overflow-hidden shadow-sm p-1">
             <img
@@ -44,10 +52,16 @@ export default function FooterBillboard() {
             </Link>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Massive Typographic Billboard Container */}
-      <div className="w-full relative flex flex-col items-center justify-center overflow-hidden -mb-3 md:-mb-6 pt-8">
+      <motion.div
+        className="w-full relative flex flex-col items-center justify-center overflow-hidden -mb-3 md:-mb-6 pt-8"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.3 }}
+      >
         {/* Massive Centered Title */}
         <h1 className="text-[12vw] font-black text-center tracking-tighter text-neutral-200/60 leading-none whitespace-nowrap font-futura z-10 mx-auto">
           VampDev
@@ -61,7 +75,7 @@ export default function FooterBillboard() {
             className="w-[20vw] h-[20vw] min-w-30 min-h-30 object-contain"
           />
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

@@ -2,6 +2,8 @@ import { socialLinks } from "../../constants/socialLinks";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
+const ease: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
 export default function SocialConnect() {
   // Convert object keys into an iterable clean array
   const linksArray = Object.entries(socialLinks).map(([platform, url]) => ({
@@ -21,7 +23,10 @@ export default function SocialConnect() {
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center justify-between py-5 relative overflow-hidden transition-colors duration-300"
-              initial="initial"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, amount: 0.2 }}
+              transition={{ delay: idx * 0.08, duration: 0.7, ease }}
               whileHover="hover"
             >
               {/* Left Side: Index + Name */}
